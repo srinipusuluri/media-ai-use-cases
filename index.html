@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Media & Entertainment - Comprehensive Use Cases</title>
+    <style>
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #ef4444;
+            --accent-color: #3b82f6;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --hollywood-gold: #f59e0b;
+            --entertainment-red: #ef4444;
+            --media-blue: #3b82f6;
+            --spotlight-yellow: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #0b1220);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--hollywood-gold), var(--entertainment-red), var(--media-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--hollywood-gold), var(--entertainment-red));
+            border: none;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--hollywood-gold), var(--entertainment-red), var(--media-blue));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .icon.ml { background: rgba(245, 158, 11, 0.2); color: var(--hollywood-gold); }
+        .icon.gen { background: rgba(239, 68, 68, 0.2); color: var(--entertainment-red); }
+        .icon.ag { background: rgba(59, 130, 246, 0.2); color: var(--media-blue); }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--hollywood-gold), var(--entertainment-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .architecture-item::before {
+            content: '→';
+            color: var(--hollywood-gold);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-title {
+            color: var(--hollywood-gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--hollywood-gold);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .media-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .streaming-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        .creative-badge {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 AI in Media & Entertainment</h1>
+            <p class="subtitle">Comprehensive Guide to Machine Learning, Generative AI, and Agentic Systems in Content Creation & Distribution</p>
+        </header>
+
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showSection('ml')">🔮 ML / Predictive</button>
+            <button class="nav-btn" onclick="showSection('gen')">✍️ Generative AI</button>
+            <button class="nav-btn" onclick="showSection('agentic')">🤖 Agentic AI</button>
+        </div>
+
+        <!-- ML / Predictive Use Cases -->
+        <div id="ml" class="content-section active">
+            <h2 class="section-title">🔮 Machine Learning & Predictive Analytics</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Advanced statistical models and algorithms for audience engagement, content optimization, and entertainment business intelligence
+            </p>
+
+            <div class="card-grid">
+                <!-- Audience Segmentation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">👥</div>
+                        <div>
+                            <div class="card-title">Audience Segmentation</div>
+                            <div class="card-subtitle">Viewer Behavior Analysis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Analyze viewer behavior and preferences to create targeted audience segments for personalized content delivery.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Clustering Algorithms</span>
+                            <span class="tech-tag">Behavioral Analytics</span>
+                            <span class="tech-tag">Demographic Analysis</span>
+                            <span class="tech-tag">Preference Modeling</span>
+                            <span class="tech-tag">Segmentation</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Viewing Data → Behavior Analysis → Segment Creation → Profile Building → Targeting</div>
+                            <div class="architecture-item">Demographics → Preferences → Engagement → Content Matching → Personalization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Viewing history and watch patterns</li>
+                                <li>Content interaction data</li>
+                                <li>Demographic and psychographic data</li>
+                                <li>Device and platform usage</li>
+                                <li>Time-of-day viewing habits</li>
+                                <li>Social media engagement</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-95%</div>
+                                <div class="metric-label">Segment Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Engagement</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-40%</div>
+                                <div class="metric-label">Retention</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Recommendation Engines -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">🎯</div>
+                        <div>
+                            <div class="card-title">Content Recommendation</div>
+                            <div class="card-subtitle">Personalized Discovery</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Provide personalized content recommendations to enhance user experience and increase content consumption.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Collaborative Filtering</span>
+                            <span class="tech-tag">Content-Based Filtering</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Hybrid Models</span>
+                            <span class="tech-tag">Real-time Processing</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">User Profile → Content Analysis → Similarity Matching → Recommendation Generation → Delivery</div>
+                            <div class="architecture-item">Behavioral Data → Preference Learning → Content Scoring → Ranking → Personalization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>User viewing history and ratings</li>
+                                <li>Content metadata and features</li>
+                                <li>Similarity matrices and embeddings</li>
+                                <li>Real-time interaction data</li>
+                                <li>Contextual information (time, device)</li>
+                                <li>A/B testing results</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Recommendation Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Content Discovery</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-45%</div>
+                                <div class="metric-label">User Engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viewership Prediction -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">📊</div>
+                        <div>
+                            <div class="card-title">Viewership Prediction</div>
+                            <div class="card-subtitle">Audience Forecasting</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict viewership metrics for content to optimize scheduling, marketing, and content acquisition decisions.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Time Series Analysis</span>
+                            <span class="tech-tag">Regression Models</span>
+                            <span class="tech-tag">Trend Analysis</span>
+                            <span class="tech-tag">Seasonal Patterns</span>
+                            <span class="tech-tag">Competitive Analysis</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Historical Data → Trend Analysis → Pattern Recognition → Forecast Generation → Optimization</div>
+                            <div class="architecture-item">Content Features → Audience Demographics → Scheduling → Promotion → Viewership Prediction</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Historical viewership data</li>
+                                <li>Content metadata and genres</li>
+                                <li>Scheduling and time slot data</li>
+                                <li>Marketing campaign performance</li>
+                                <li>Competitor programming data</li>
+                                <li>Seasonal and event-based patterns</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Prediction Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Programming Optimization</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">20-35%</div>
+                                <div class="metric-label">Marketing Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Targeting Models -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">💰</div>
+                        <div>
+                            <div class="card-title">Ad Targeting Models</div>
+                            <div class="card-subtitle">Precision Advertising</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Optimize ad placement and targeting to maximize revenue while maintaining viewer experience.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Predictive Analytics</span>
+                            <span class="tech-tag">Audience Profiling</span>
+                            <span class="tech-tag">Bid Optimization</span>
+                            <span class="tech-tag">Real-time Bidding</span>
+                            <span class="tech-tag">ROI Analysis</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Audience Data → Targeting Criteria → Bid Strategy → Ad Placement → Performance Tracking</div>
+                            <div class="architecture-item">Content Context → Viewer Profile → Ad Matching → Revenue Optimization → Analytics</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Viewer demographic and behavioral data</li>
+                                <li>Content context and metadata</li>
+                                <li>Ad performance and conversion data</li>
+                                <li>Bidding and pricing information</li>
+                                <li>Competitor ad strategies</li>
+                                <li>Revenue and ROI metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Ad Relevance</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Revenue Growth</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-45%</div>
+                                <div class="metric-label">Click-through Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Churn Prediction -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">⚠️</div>
+                        <div>
+                            <div class="card-title">Churn Prediction</div>
+                            <div class="card-subtitle">Subscriber Retention</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict subscriber churn to implement retention strategies and reduce customer attrition.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Survival Analysis</span>
+                            <span class="tech-tag">Risk Modeling</span>
+                            <span class="tech-tag">Behavioral Analytics</span>
+                            <span class="tech-tag">Intervention Strategies</span>
+                            <span class="tech-tag">Retention Optimization</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Usage Patterns → Risk Assessment → Churn Prediction → Intervention Planning → Retention</div>
+                            <div class="architecture-item">Engagement Metrics → Satisfaction Analysis → Churn Probability → Preventive Actions → Monitoring</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Subscription and billing history</li>
+                                <li>Content consumption patterns</li>
+                                <li>Customer service interactions</li>
+                                <li>Engagement and satisfaction metrics</li>
+                                <li>Competitor offerings</li>
+                                <li>Demographic and behavioral data</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Churn Prediction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Retention Rate</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-40%</div>
+                                <div class="metric-label">Customer Lifetime Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Performance Modeling -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">📈</div>
+                        <div>
+                            <div class="card-title">Content Performance</div>
+                            <div class="card-subtitle">Success Prediction</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict content performance across different platforms and audiences to optimize content strategy and investment decisions.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Performance Analytics</span>
+                            <span class="tech-tag">Trend Analysis</span>
+                            <span class="tech-tag">Audience Insights</span>
+                            <span class="tech-tag">Platform Optimization</span>
+                            <span class="tech-tag">ROI Modeling</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Analysis → Platform Matching → Audience Targeting → Performance Prediction → Optimization</div>
+                            <div class="architecture-item">Historical Data → Trend Analysis → Success Factors → Investment Strategy → Performance Tracking</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Historical content performance data</li>
+                                <li>Platform-specific metrics</li>
+                                <li>Audience engagement patterns</li>
+                                <li>Content metadata and features</li>
+                                <li>Marketing and promotion data</li>
+                                <li>Competitive content analysis</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-85%</div>
+                                <div class="metric-label">Performance Prediction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Content ROI</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Investment Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generative AI Use Cases -->
+        <div id="gen" class="content-section">
+            <h2 class="section-title">✍️ Generative AI Applications</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                AI-powered content creation, storytelling, and production tools for media and entertainment industries
+            </p>
+
+            <div class="card-grid">
+                <!-- Script Writing -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📝</div>
+                        <div>
+                            <div class="card-title">Script Writing</div>
+                            <div class="card-subtitle">Creative Story Development</div>
+                            <span class="creative-badge">Creative</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate compelling scripts and storylines for films, TV shows, and digital content with AI assistance.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Story Structure</span>
+                            <span class="tech-tag">Character Development</span>
+                            <span class="tech-tag">Dialogue Generation</span>
+                            <span class="tech-tag">Genre Adaptation</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Concept → Outline → Scene Development → Dialogue → Script Generation → Review</div>
+                            <div class="architecture-item">Character Arcs → Plot Points → Conflict Resolution → Theme Development → Final Draft</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Scriptwriting best practices</li>
+                                <li>Genre conventions and tropes</li>
+                                <li>Character archetypes</li>
+                                <li>Dialogue patterns</li>
+                                <li>Story structure templates</li>
+                                <li>Successful script examples</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Writing Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Story Coherence</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 weeks</div>
+                                <div class="metric-label">Script Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trailer Generation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎬</div>
+                        <div>
+                            <div class="card-title">Trailer Generation</div>
+                            <div class="card-subtitle">Marketing Content Creation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Automatically generate engaging trailers and promotional content to maximize audience interest and box office performance.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Video Analysis</span>
+                            <span class="tech-tag">Scene Selection</span>
+                            <span class="tech-tag">Music Synchronization</span>
+                            <span class="tech-tag">Narrative Structure</span>
+                            <span class="tech-tag">Emotional Impact</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Analysis → Scene Selection → Narrative Flow → Music Integration → Trailer Assembly → Optimization</div>
+                            <div class="architecture-item">Emotional Arc → Pacing → Key Moments → Branding → Audience Targeting → Distribution</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Full content footage and metadata</li>
+                                <li>Successful trailer templates</li>
+                                <li>Music and sound effect libraries</li>
+                                <li>Audience preference data</li>
+                                <li>Brand guidelines and tone</li>
+                                <li>Platform-specific requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Production Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Marketing Costs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-40%</div>
+                                <div class="metric-label">Audience Engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Storyline Creation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎮</div>
+                        <div>
+                            <div class="card-title">Game Storyline Creation</div>
+                            <div class="card-subtitle">Interactive Narrative Design</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate branching storylines and interactive narratives for video games with multiple player choices and outcomes.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Interactive Storytelling</span>
+                            <span class="tech-tag">Branching Logic</span>
+                            <span class="tech-tag">Character Development</span>
+                            <span class="tech-tag">World Building</span>
+                            <span class="tech-tag">Player Agency</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Core Narrative → Branching Paths → Choice Points → Consequences → Multiple Endings → Integration</div>
+                            <div class="architecture-item">World Lore → Character Arcs → Quest Design → Dialogue Trees → Player Impact → Game Integration</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Game genre and mechanics</li>
+                                <li>Target audience preferences</li>
+                                <li>Branching narrative patterns</li>
+                                <li>Character development frameworks</li>
+                                <li>World-building guidelines</li>
+                                <li>Player choice impact models</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Story Branching</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Development Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Player Engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalized Content Summaries -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📋</div>
+                        <div>
+                            <div class="card-title">Personalized Content Summaries</div>
+                            <div class="card-subtitle">Adaptive Storytelling</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate personalized content summaries and recaps tailored to individual viewer preferences and viewing history.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Content Analysis</span>
+                            <span class="tech-tag">Personalization</span>
+                            <span class="tech-tag">Summarization</span>
+                            <span class="tech-tag">User Preferences</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Analysis → Key Points Extraction → Personalization → Summary Generation → Delivery</div>
+                            <div class="architecture-item">Viewer History → Preference Learning → Content Matching → Adaptive Summaries → Engagement</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Full content transcripts</li>
+                                <li>Viewer preference profiles</li>
+                                <li>Summarization algorithms</li>
+                                <li>Personalization rules</li>
+                                <li>Content metadata</li>
+                                <li>Engagement tracking</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Summary Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Personalization</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">5-10 minutes</div>
+                                <div class="metric-label">Summary Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Generation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎵</div>
+                        <div>
+                            <div class="card-title">Music Generation</div>
+                            <div class="card-subtitle">AI Composed Soundtracks</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Create original music and soundtracks for films, games, and digital content using AI composition techniques.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Neural Audio Synthesis</span>
+                            <span class="tech-tag">Music Theory</span>
+                            <span class="tech-tag">Emotional Mapping</span>
+                            <span class="tech-tag">Genre Adaptation</span>
+                            <span class="tech-tag">Sound Design</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Emotional Context → Musical Style → Composition → Arrangement → Production → Integration</div>
+                            <div class="architecture-item">Scene Analysis → Mood Matching → Melody Generation → Harmony → Instrumentation → Final Mix</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Music theory and composition rules</li>
+                                <li>Emotional mapping to musical elements</li>
+                                <li>Genre-specific patterns</li>
+                                <li>Instrument sound libraries</li>
+                                <li>Scene context analysis</li>
+                                <li>Production quality standards</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-95%</div>
+                                <div class="metric-label">Musical Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Production Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Licensing Costs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing Automation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">✂️</div>
+                        <div>
+                            <div class="card-title">Video Editing Automation</div>
+                            <div class="card-subtitle">Smart Content Assembly</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Automate video editing processes including cutting, transitions, effects, and color grading for faster content production.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Scene Detection</span>
+                            <span class="tech-tag">Automated Transitions</span>
+                            <span class="tech-tag">Color Grading</span>
+                            <span class="tech-tag">Pacing Optimization</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Raw Footage → Scene Analysis → Cut Points → Transitions → Effects → Final Assembly</div>
+                            <div class="architecture-item">Content Analysis → Pacing → Color Correction → Audio Sync → Quality Check → Export</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Raw video footage and metadata</li>
+                                <li>Editing style preferences</li>
+                                <li>Scene transition patterns</li>
+                                <li>Color grading presets</li>
+                                <li>Audio synchronization data</li>
+                                <li>Quality standards</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Editing Speed</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Editorial Costs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Quality Consistency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agentic AI Use Cases -->
+        <div id="agentic" class="content-section">
+            <h2 class="section-title">🤖 Agentic AI Systems</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Autonomous AI agents that can reason, plan, and execute complex media production and distribution workflows
+            </p>
+
+            <div class="card-grid">
+                <!-- Content Production Workflow Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🎬</div>
+                        <div>
+                            <div class="card-title">Content Production Workflow</div>
+                            <div class="card-subtitle">End-to-End Production</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Orchestrate and automate the entire content production pipeline from concept to final delivery.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Workflow Automation</span>
+                            <span class="tech-tag">Resource Management</span>
+                            <span class="tech-tag">Timeline Optimization</span>
+                            <span class="tech-tag">Quality Control</span>
+                            <span class="tech-tag">Collaboration Coordination</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Concept → Pre-production → Production → Post-production → Distribution → Marketing</div>
+                            <div class="architecture-item">Script Development → Casting → Shooting → Editing → Effects → Release</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Production schedules and timelines</li>
+                                <li>Resource availability and allocation</li>
+                                <li>Budget tracking and management</li>
+                                <li>Quality standards and checkpoints</li>
+                                <li>Team collaboration tools</li>
+                                <li>Delivery requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Production Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Production Costs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-45%</div>
+                                <div class="metric-label">Resource Utilization</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalized Streaming Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">📺</div>
+                        <div>
+                            <div class="card-title">Personalized Streaming</div>
+                            <div class="card-subtitle">Adaptive Content Delivery</div>
+                            <span class="streaming-badge">Streaming</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Provide personalized streaming experiences with adaptive content delivery, recommendations, and user interface optimization.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Adaptive Streaming</span>
+                            <span class="tech-tag">Personalization</span>
+                            <span class="tech-tag">Content Optimization</span>
+                            <span class="tech-tag">User Experience</span>
+                            <span class="tech-tag">Real-time Adaptation</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">User Profile → Content Analysis → Personalization → Delivery Optimization → Experience Enhancement</div>
+                            <div class="architecture-item">Bandwidth Monitoring → Quality Adjustment → Recommendation → Interface Customization → Feedback Loop</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>User viewing preferences and history</li>
+                                <li>Network bandwidth and quality</li>
+                                <li>Device capabilities and settings</li>
+                                <li>Content metadata and quality</li>
+                                <li>User interface interaction data</li>
+                                <li>Real-time performance metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-95%</div>
+                                <div class="metric-label">User Satisfaction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Buffering</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Content Discovery</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Campaign Optimization Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">💰</div>
+                        <div>
+                            <div class="card-title">Ad Campaign Optimization</div>
+                            <div class="card-subtitle">Revenue Maximization</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Optimize advertising campaigns across platforms to maximize revenue while maintaining viewer experience and engagement.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Campaign Management</span>
+                            <span class="tech-tag">Revenue Optimization</span>
+                            <span class="tech-tag">Audience Targeting</span>
+                            <span class="tech-tag">Real-time Bidding</span>
+                            <span class="tech-tag">Performance Analytics</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Campaign Setup → Audience Targeting → Ad Placement → Performance Monitoring → Optimization → Reporting</div>
+                            <div class="architecture-item">Budget Allocation → Creative Rotation → Bid Strategy → Revenue Tracking → ROI Analysis → Strategy Adjustment</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Ad inventory and availability</li>
+                                <li>Audience demographic data</li>
+                                <li>Bidding and pricing information</li>
+                                <li>Campaign performance metrics</li>
+                                <li>Revenue and ROI data</li>
+                                <li>Competitor analysis</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Ad Revenue</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Campaign Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-45%</div>
+                                <div class="metric-label">Viewer Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Moderation Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🛡️</div>
+                        <div>
+                            <div class="card-title">Real-time Moderation</div>
+                            <div class="card-subtitle">Content Safety</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Monitor and moderate user-generated content in real-time to ensure platform safety and compliance with community guidelines.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Content Moderation</span>
+                            <span class="tech-tag">Real-time Analysis</span>
+                            <span class="tech-tag">Policy Enforcement</span>
+                            <span class="tech-tag">User Safety</span>
+                            <span class="tech-tag">Compliance Monitoring</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Upload → Analysis → Policy Check → Moderation Decision → Action → Appeal Process</div>
+                            <div class="architecture-item">Text Analysis → Image/Video Analysis → Audio Analysis → Context Understanding → Moderation → Review</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Community guidelines and policies</li>
+                                <li>Content analysis algorithms</li>
+                                <li>User behavior patterns</li>
+                                <li>Appeal and review processes</li>
+                                <li>Legal and regulatory requirements</li>
+                                <li>Historical moderation data</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">95-99%</div>
+                                <div class="metric-label">Content Safety</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Moderation Speed</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Accuracy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IP Rights Management Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🔒</div>
+                        <div>
+                            <div class="card-title">IP Rights Management</div>
+                            <div class="card-subtitle">Content Protection</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Monitor and manage intellectual property rights across platforms to prevent unauthorized use and ensure proper licensing.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Content Fingerprinting</span>
+                            <span class="tech-tag">Rights Management</span>
+                            <span class="tech-tag">License Tracking</span>
+                            <span class="tech-tag">Infringement Detection</span>
+                            <span class="tech-tag">Legal Compliance</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Registration → Rights Tracking → Usage Monitoring → Infringement Detection → Enforcement → Licensing</div>
+                            <div class="architecture-item">Digital Watermarking → Distribution Tracking → License Management → Legal Action → Revenue Recovery</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Content registration databases</li>
+                                <li>License agreements and terms</li>
+                                <li>Distribution tracking systems</li>
+                                <li>Infringement detection algorithms</li>
+                                <li>Legal and regulatory frameworks</li>
+                                <li>Revenue tracking and reporting</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Rights Protection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Infringement Detection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Legal Costs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-platform Publishing Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">📱</div>
+                        <div>
+                            <div class="card-title">Multi-platform Publishing</div>
+                            <div class="card-subtitle">Cross-platform Distribution</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Automate content publishing across multiple platforms with platform-specific optimization and performance tracking.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Platform Integration</span>
+                            <span class="tech-tag">Content Optimization</span>
+                            <span class="tech-tag">Scheduling</span>
+                            <span class="tech-tag">Performance Analytics</span>
+                            <span class="tech-tag">Cross-platform Management</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Content Preparation → Platform Analysis → Format Optimization → Scheduling → Publishing → Performance Tracking</div>
+                            <div class="architecture-item">Platform Requirements → Content Adaptation → Distribution Strategy → Engagement Monitoring → Optimization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Platform-specific requirements</li>
+                                <li>Content format specifications</li>
+                                <li>Audience demographics per platform</li>
+                                <li>Optimal posting times</li>
+                                <li>Performance metrics and KPIs</li>
+                                <li>Engagement patterns</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-95%</div>
+                                <div class="metric-label">Platform Coverage</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Publishing Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Cross-platform Engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>✨ Built with cutting-edge AI technologies for the future of media and entertainment</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                Note: Implementation requires careful consideration of creative rights, content quality, and audience engagement
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
